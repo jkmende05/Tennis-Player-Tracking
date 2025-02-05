@@ -1,2 +1,12 @@
 # Tennis-Player-Tracking
-This project uses machine learning and computer vision to analyze and track tennis players during a match through the use of video. It will measure player speeds, ball speeds, and number of shots using YOLO and CNNs.
+This project uses machine learning and computer vision to analyze and track tennis players during a match through the use of video. It will measure player speeds, ball speeds, and number of shots using YOLO and other machine learning techniques. 
+
+### Process
+Process involved training the machine learning model. Due to limitations, the Jupyter notebooks in the train_tennis_ball folder were run on Google Colab, and the required best.pt, keypoint_model.pth and last.pt files were downloaded and added to a folder called models. Afterwards, different classes and functions were created and added to help track the players and ball, determine court keypoints, estimate position on the mini court graphic, and calculate key statistics, such as shot speed, player speed, average shot speed, and average player speed. 
+
+### Output
+By running main.py, we are able to successfully track the players and the ball during a tennis rally. The speed of each shot and player is displayed on the right of the video, and the estimated position of the ball and players is shown on the mini court in the top right. To see a video of the output, look at and download the output_video.avi file found in the output_files folder.
+
+### Adaptability
+This program is very easy to adjust and change for a different rally or video. To do this, add the required video into the input_files folder and in line 13 of main.py, change the input_videopath to the intended video. Additionally, for player_detections and ball_detections in line 18 and 21 of main.py, change the parameter read_from_stub from True to False. This must only be done the first time after the video path is changed to improve how quickly the program is able to finish. The frame rate of the videos can differ as well. In line 62 of main.py, to calculate the ball shot time in seconds, a calculation is done by substrating start_frame from end_frame and dividing by the total number of frames per second. For the example provided, this is 25. To check on a Windows machine, right click on the video in File Explorer, go to properties, and under details, you will find frame rate. One more step is also required. Under the __init__.py file in constants, the player heights must be changed and listed in meters. Player one is located closest to the camera with their back facing the camera, and palyer two is on the far side of the court and is facing the camera.
+
